@@ -390,7 +390,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
           //DateFormat.MMMM(_locale).format(currentDate);
 
           return Padding(
-            padding: const EdgeInsets.only(right: 18, bottom: 14),
+            padding: const EdgeInsets.only(right: 18),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
