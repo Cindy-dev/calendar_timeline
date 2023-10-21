@@ -31,6 +31,7 @@ class CalendarTimeline extends StatefulWidget {
     this.shrink = false,
     this.locale,
     this.showYears = false,
+    this.dayTextStyle,
   })  : assert(
           initialDate.difference(firstDate).inDays >= 0,
           'initialDate must be on or after firstDate',
@@ -64,6 +65,7 @@ class CalendarTimeline extends StatefulWidget {
   final Color? monthColor;
   final Color? dotsColor;
   final Color? dayNameColor;
+  final TextStyle? dayTextStyle;
   final bool shrink;
   final String? locale;
 
@@ -314,6 +316,9 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         if (widget.showYears) _buildYearList(),
+        const SizedBox(
+          height: 10,
+        ),
         _buildMonthList(),
         _buildDayList(),
       ],
@@ -347,7 +352,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
                   isSelected: _yearSelectedIndex == index,
                   name: yearName,
                   onTap: () => _onSelectYear(index),
-                  color: widget.monthColor,
+                  color: widget.activeBackgroundDayColor,
                   small: false,
                   shrink: widget.shrink,
                 ),
@@ -371,7 +376,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
   /// months in the calendar and the small version of [YearItem] for each year in between
   Widget _buildMonthList() {
     return SizedBox(
-      height: 30,
+      height: 40,
       child: ScrollablePositionedList.builder(
         initialScrollIndex: _monthSelectedIndex ?? 0,
         initialAlignment: _scrollAlignment,
@@ -381,26 +386,27 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
         itemCount: _months.length,
         itemBuilder: (BuildContext context, int index) {
           final currentDate = _months[index];
-          final monthName = DateFormat.MMMM(_locale).format(currentDate);
+          final monthName = DateFormat.MMM(_locale).format(currentDate);
+          //DateFormat.MMMM(_locale).format(currentDate);
 
           return Padding(
-            padding: const EdgeInsets.only(right: 12, left: 4),
+            padding: const EdgeInsets.only(right: 18, bottom: 14),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                if (widget.firstDate.year != currentDate.year &&
-                    currentDate.month == 1 &&
-                    !widget.showYears)
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: YearItem(
-                      name: DateFormat.y(_locale).format(currentDate),
-                      color: widget.monthColor,
-                      onTap: () {},
-                      shrink: widget.shrink,
-                    ),
-                  ),
+              children: [
+                // if (widget.firstDate.year != currentDate.year &&
+                //     currentDate.month == 1 &&
+                //     !widget.showYears)
+                //   Padding(
+                //     padding: const EdgeInsets.only(right: 10),
+                //     child: YearItem(
+                //       name: DateFormat.y(_locale).format(currentDate),
+                //       color: widget.monthColor,
+                //       onTap: () {},
+                //       shrink: widget.shrink,
+                //     ),
+                //   ),
                 MonthItem(
                   isSelected: _monthSelectedIndex == index,
                   name: monthName,
@@ -415,7 +421,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
                     width: MediaQuery.of(context).size.width -
                         widget.leftMargin -
                         (monthName.length * 10),
-                  )
+                  ),
               ],
             ),
           );
@@ -430,7 +436,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
   Widget _buildDayList() {
     return SizedBox(
       key: const Key('ScrollableDayList'),
-      height: 70,
+      height: 110,
       child: ScrollablePositionedList.builder(
         itemScrollController: _controllerDay,
         initialScrollIndex: _daySelectedIndex ?? 0,
@@ -459,6 +465,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
                 dotsColor: widget.dotsColor,
                 dayNameColor: widget.dayNameColor,
                 shrink: widget.shrink,
+                dayTextStyle: widget.dayTextStyle,
               ),
               if (index == _days.length - 1)
                 // Last element to take space to do scroll to left side

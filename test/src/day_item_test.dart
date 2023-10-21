@@ -16,6 +16,7 @@ void main() {
             (WidgetTester tester) async {
               await tester.pumpApp(
                 DayItem(
+                  dayTextStyle: ParamFactory.dayTextStyle,
                   dayNumber: ParamFactory.dayNumber,
                   shortName: ParamFactory.dayName,
                   isSelected: true,
@@ -39,6 +40,7 @@ void main() {
             (WidgetTester tester) async {
               await tester.pumpApp(
                 DayItem(
+                  dayTextStyle: ParamFactory.dayTextStyle,
                   dayNumber: ParamFactory.dayNumber,
                   shortName: ParamFactory.dayName,
                   activeDayBackgroundColor: ParamFactory.activeColor,
@@ -57,6 +59,7 @@ void main() {
 
               await tester.pumpApp(
                 DayItem(
+                  dayTextStyle: ParamFactory.dayTextStyle,
                   dayNumber: ParamFactory.dayNumber,
                   shortName: ParamFactory.dayName,
                   activeDayBackgroundColor: ParamFactory.activeColor,
@@ -80,6 +83,7 @@ void main() {
             (WidgetTester tester) async {
               await tester.pumpApp(
                 DayItem(
+                  dayTextStyle: ParamFactory.dayTextStyle,
                   dayNumber: ParamFactory.dayNumber,
                   shortName: ParamFactory.dayName,
                   activeDayColor: ParamFactory.activeColor,
@@ -98,6 +102,7 @@ void main() {
 
               await tester.pumpApp(
                 DayItem(
+                  dayTextStyle: ParamFactory.dayTextStyle,
                   dayNumber: ParamFactory.dayNumber,
                   shortName: ParamFactory.dayName,
                   activeDayColor: ParamFactory.activeColor,

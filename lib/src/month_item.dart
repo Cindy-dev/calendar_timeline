@@ -23,13 +23,11 @@ class MonthItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap as void Function()?,
       child: Text(
-        name.toUpperCase(),
+        name,
         style: TextStyle(
-          fontSize: shrink ? 10 : 14,
-          color: isSelected
-              ? activeColor ?? const Color(0xFF002265)
-              : color ?? Colors.black87,
-          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+          fontSize: 17,
+          color: isSelected ? activeColor : const Color(0xff9A9A9A),
+          fontWeight: isSelected ? FontWeight.w600 : FontWeight.w300,
         ),
       ),
     );

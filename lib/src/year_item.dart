@@ -28,8 +28,8 @@ class YearItem extends StatelessWidget {
       child: Container(
         decoration: isSelected || small
             ? BoxDecoration(
-                border: Border.all(color: color ?? Colors.black87),
-                borderRadius: BorderRadius.circular(4),
+                color: color,
+                borderRadius: BorderRadius.circular(8),
               )
             : null,
         child: Padding(
@@ -42,7 +42,7 @@ class YearItem extends StatelessWidget {
                   : small
                       ? 12
                       : 20,
-              color: color ?? Colors.black87,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),

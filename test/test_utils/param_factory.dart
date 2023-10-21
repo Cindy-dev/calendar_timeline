@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 abstract class ParamFactory {
+
+  //testStyle
+  static const TextStyle  dayTextStyle = TextStyle(
+    fontSize: 12
+  );
+
   // int
   static const int dayNumber = 1;
 

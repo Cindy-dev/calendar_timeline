@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF333A47),
+      //backgroundColor: const Color(0xFF333A47),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,21 +59,40 @@ class _HomePageState extends State<HomePage> {
                     .copyWith(color: Colors.tealAccent[100]),
               ),
             ),
+            // CalendarTimeline(
+            //   showYears: true,
+            //   initialDate: _selectedDate,
+            //   firstDate: DateTime.now(),
+            //   lastDate: DateTime.now().add(const Duration(days: 365 * 4)),
+            //   onDateSelected: (date) => setState(() => _selectedDate = date),
+            //   leftMargin: 20,
+            //   monthColor: Colors.white70,
+            //   dayColor: Colors.teal[200],
+            //   dayNameColor: const Color(0xFF333A47),
+            //   activeDayColor: Colors.white,
+            //   activeBackgroundDayColor: Colors.redAccent[100],
+            //   dotsColor: const Color(0xFF333A47),
+            //   selectableDayPredicate: (date) => date.day != 23,
+            //   locale: 'en',
+            // ),
+
             CalendarTimeline(
-              showYears: true,
-              initialDate: _selectedDate,
-              firstDate: DateTime.now(),
-              lastDate: DateTime.now().add(const Duration(days: 365 * 4)),
-              onDateSelected: (date) => setState(() => _selectedDate = date),
+              initialDate: DateTime.now(),
+              firstDate: DateTime(2019, 1, 15),
+              lastDate: DateTime(2090, 1, 15),
+              onDateSelected: (date) => print(date),
               leftMargin: 20,
-              monthColor: Colors.white70,
+              monthColor: Colors.blueGrey,
+              dayTextStyle: const TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+              ),
               dayColor: Colors.teal[200],
               dayNameColor: const Color(0xFF333A47),
               activeDayColor: Colors.white,
-              activeBackgroundDayColor: Colors.redAccent[100],
-              dotsColor: const Color(0xFF333A47),
-              selectableDayPredicate: (date) => date.day != 23,
-              locale: 'en',
+              locale: 'en_ISO',
+              activeBackgroundDayColor: const Color(0xff4476F6),
             ),
             const SizedBox(height: 20),
             Padding(
